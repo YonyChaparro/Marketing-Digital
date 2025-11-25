@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        urban: ['Anton', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-fixed bg-cover bg-center" style="background-image: url('/img/fondo\ pared.jpg');">
+
+    <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md text-white z-50 border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center">
+                <img src="/img/log.jpg" alt="El Espiral" class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex justify-center flex-1">
+                <ul class="flex space-x-8">
+                    <li><a href="#inicio" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">INICIO</a></li>
+                    <li><a href="#eventos" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">EVENTOS</a></li>
+                    <li><a href="#galeria" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">GALERÍA</a></li>
+                    <li><a href="#patrocinadores" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">PATROCINADORES</a></li>
+                    <li><a href="#contacto" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white hover:text-yellow-400 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-800 absolute w-full left-0 top-full">
+            <ul class="flex flex-col items-center py-8 space-y-6">
+                <li><a href="#inicio" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">INICIO</a></li>
+                <li><a href="#eventos" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">EVENTOS</a></li>
+                <li><a href="#galeria" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">GALERÍA</a></li>
+                <li><a href="#patrocinadores" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">PATROCINADORES</a></li>
+                <li><a href="#contacto" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">CONTACTO</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative w-full h-screen min-h-[600px] flex items-center bg-black overflow-hidden">
+        <!-- Fondo abstracto amarillo/negro -->
+        <div class="absolute inset-0 z-0">
+            <img src="/Gemini_Generated_Image_t8d6klt8d6klt8d6.png" alt="Fondo Espiral" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 md:px-12">
+            <div class="max-w-4xl">
+                <h1 class="text-6xl md:text-8xl font-urban text-white leading-none uppercase mb-4 tracking-wide">
+                    EL ESPIRAL: <span class="text-yellow-400">CULTURA</span><br>
+                    FREESTYLE EN BOGOTÁ
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 font-medium tracking-wide">
+                    Batallas de rap, música en vivo, comunidad y arte urbano.
+                </p>
+                <a href="#noticias" class="inline-block bg-yellow-400 text-black font-urban py-3 px-8 rounded text-2xl hover:bg-yellow-300 transition-colors uppercase tracking-widest">
+                    ÚLTIMAS NOTICIAS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="py-16 px-4 bg-black/30 text-white backdrop-blur-sm">
+        <h2 class="text-5xl md:text-6xl font-urban text-center text-yellow-400 mb-16 uppercase tracking-widest">Próximos Eventos</h2>
+        
+        <div class="container mx-auto columns-1 md:columns-3 gap-8 max-w-6xl">
+            <!-- Card 1 -->
+            <div class="break-inside-avoid mb-8 border-2 border-yellow-400 p-4 flex flex-col items-center bg-black hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-shadow">
+                <div class="w-full mb-4 overflow-hidden">
+                    <img src="/img/562054900_17883775632402975_1540329718544191776_n.webp" alt="Batalla de Gallos" class="w-full h-auto hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="text-2xl font-urban text-center mb-2 uppercase leading-none tracking-wide">BATALLA DE GALLOS -<br>EDICIÓN UNIVERSITARIA</h3>
+                <p class="text-gray-300 mb-6 font-bold">Oct 26, 2025</p>
+                <a href="#" class="mt-auto bg-yellow-400 text-black font-urban py-2 px-6 rounded hover:bg-yellow-300 transition-colors uppercase w-full text-center text-xl tracking-wider">INFO & ENTRADAS</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="break-inside-avoid mb-8 border-2 border-yellow-400 p-4 flex flex-col items-center bg-black hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-shadow">
+                <div class="w-full mb-4 overflow-hidden">
+                    <img src="/img/572283540_17965382573987429_3212556403195497482_n.jpg" alt="Beatmaking" class="w-full h-auto hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="text-2xl font-urban text-center mb-2 uppercase leading-none tracking-wide">CYPHER Y WORKSHOP DE<br>BEATMAKING</h3>
+                <p class="text-gray-300 mb-6 font-bold">Nov 15, 2025</p>
+                <a href="#" class="mt-auto bg-yellow-400 text-black font-urban py-2 px-6 rounded hover:bg-yellow-300 transition-colors uppercase w-full text-center text-xl tracking-wider">REGÍSTRATE</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="break-inside-avoid mb-8 border-2 border-yellow-400 p-4 flex flex-col items-center bg-black hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-shadow">
+                <div class="w-full mb-4 overflow-hidden">
+                    <img src="/img/581936208_17967390533987429_5309048437341685467_n.jpg" alt="Exhibición" class="w-full h-auto hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="text-2xl font-urban text-center mb-2 uppercase leading-none tracking-wide">EXHIBICIÓN: EL ESPIRAL<br>ALL-STARS</h3>
+                <p class="text-gray-300 mb-6 font-bold">Dic 5, 2025</p>
+                <a href="#" class="mt-auto bg-yellow-400 text-black font-urban py-2 px-6 rounded hover:bg-yellow-300 transition-colors uppercase w-full text-center text-xl tracking-wider">DETALLES</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-16 px-4 bg-black/60 text-white backdrop-blur-sm">
+        <h2 class="text-5xl md:text-6xl font-urban text-center text-yellow-400 mb-16 uppercase tracking-widest">Galería</h2>
+        
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Fila 1 -->
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=800&auto=format&fit=crop" alt="Galería 1" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=800&auto=format&fit=crop" alt="Galería 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?q=80&w=800&auto=format&fit=crop" alt="Galería 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=800&auto=format&fit=crop" alt="Galería 4" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+
+                <!-- Fila 2 -->
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=800&auto=format&fit=crop" alt="Galería 5" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1525362081669-2b476bb628c3?q=80&w=800&auto=format&fit=crop" alt="Galería 6" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1459749411177-0473ef7161a9?q=80&w=800&auto=format&fit=crop" alt="Galería 7" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+                <div class="aspect-video rounded-lg overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?q=80&w=800&auto=format&fit=crop" alt="Galería 8" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-yellow-400/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-500"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="patrocinadores" class="py-16 px-4 bg-black/30 text-white border-t border-gray-900 backdrop-blur-sm">
+        <h2 class="text-5xl md:text-6xl font-urban text-center text-yellow-400 mb-16 uppercase tracking-widest">Nuestros Patrocinadores</h2>
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-70">
+                <!-- Logos simulados -->
+                <div class="h-32 flex items-center justify-center border border-gray-800 bg-gray-900/50 hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300 cursor-pointer group">
+                    <span class="text-3xl font-urban tracking-widest group-hover:scale-110 transition-transform">URBAN<span class="text-gray-500 group-hover:text-white">WEAR</span></span>
+                </div>
+                <div class="h-32 flex items-center justify-center border border-gray-800 bg-gray-900/50 hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300 cursor-pointer group">
+                    <span class="text-3xl font-urban tracking-widest group-hover:scale-110 transition-transform">BEAT<span class="text-gray-500 group-hover:text-white">BOX</span></span>
+                </div>
+                <div class="h-32 flex items-center justify-center border border-gray-800 bg-gray-900/50 hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300 cursor-pointer group">
+                    <span class="text-3xl font-urban tracking-widest group-hover:scale-110 transition-transform">GRAFF<span class="text-gray-500 group-hover:text-white">CITY</span></span>
+                </div>
+                <div class="h-32 flex items-center justify-center border border-gray-800 bg-gray-900/50 hover:border-yellow-400 hover:text-yellow-400 transition-all duration-300 cursor-pointer group">
+                    <span class="text-3xl font-urban tracking-widest group-hover:scale-110 transition-transform">FLOW<span class="text-gray-500 group-hover:text-white">MASTER</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-20 px-4 bg-black/60 text-white border-t border-gray-900 backdrop-blur-sm">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-5xl md:text-6xl font-urban text-center text-yellow-400 mb-16 uppercase tracking-widest">Contacto</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <!-- Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-3xl font-urban uppercase mb-4 text-white tracking-wide">¿Quieres participar?</h3>
+                        <p class="text-gray-400 leading-relaxed text-lg">Si eres artista, patrocinador o quieres ser parte del staff, escríbenos. El Espiral está abierto para todos los que viven la cultura urbana.</p>
+                    </div>
+                    
+                    <div class="space-y-6 pt-4">
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-gray-900 border border-yellow-400/30 rounded-lg flex items-center justify-center text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <span class="text-lg text-gray-300 group-hover:text-white transition-colors font-bold">contacto@elespiral.com</span>
+                        </div>
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-gray-900 border border-yellow-400/30 rounded-lg flex items-center justify-center text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                            </div>
+                            <span class="text-lg text-gray-300 group-hover:text-white transition-colors font-bold">+57 300 123 4567</span>
+                        </div>
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-gray-900 border border-yellow-400/30 rounded-lg flex items-center justify-center text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <span class="text-lg text-gray-300 group-hover:text-white transition-colors font-bold">Bogotá, Colombia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form class="space-y-6 bg-gray-900/30 p-8 rounded-xl border border-gray-800">
+                    <div>
+                        <label class="block text-sm font-urban text-yellow-400 uppercase mb-2 tracking-widest">Nombre</label>
+                        <input type="text" class="w-full bg-black border border-gray-700 text-white px-4 py-3 rounded focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all placeholder-gray-600" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-urban text-yellow-400 uppercase mb-2 tracking-widest">Email</label>
+                        <input type="email" class="w-full bg-black border border-gray-700 text-white px-4 py-3 rounded focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all placeholder-gray-600" placeholder="tu@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-urban text-yellow-400 uppercase mb-2 tracking-widest">Mensaje</label>
+                        <textarea rows="4" class="w-full bg-black border border-gray-700 text-white px-4 py-3 rounded focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all placeholder-gray-600" placeholder="¿Qué nos quieres contar?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-yellow-400 text-black font-urban py-4 px-8 rounded hover:bg-yellow-300 transition-all transform hover:-translate-y-1 uppercase tracking-widest shadow-lg hover:shadow-yellow-400/20 text-xl">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
