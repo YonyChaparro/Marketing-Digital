@@ -63,10 +63,10 @@ const events = [
 // Render Carousel Items
 function renderCarouselItems() {
     const itemsHTML = events.map((event, index) => `
-        <div class="carousel-item w-auto p-4 flex-shrink-0 select-none">
+        <div class="carousel-item w-auto min-w-[300px] p-4 flex-shrink-0 select-none">
             <div class="border-2 border-yellow-400 p-4 flex flex-col items-center bg-black hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-shadow h-full">
-                <div class="mb-4 overflow-hidden flex justify-center pointer-events-none">
-                    <img src="${event.img}" alt="${event.title}" class="h-80 md:h-96 w-auto object-contain hover:scale-110 transition-transform duration-500">
+                <div class="mb-4 overflow-hidden flex justify-center pointer-events-none w-full">
+                    <img src="${event.img}" alt="${event.title}" class="h-80 md:h-96 w-auto object-contain hover:scale-110 transition-transform duration-500" loading="eager">
                 </div>
                 <h3 class="text-2xl font-urban text-center mb-2 uppercase leading-none tracking-wide pointer-events-none">${event.title}</h3>
                 <p class="text-gray-300 mb-6 font-bold pointer-events-none">PRÓXIMAMENTE</p>
