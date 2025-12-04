@@ -39,37 +39,38 @@ loadLessBtn.addEventListener('click', () => {
 
 // Carousel Logic
 const track = document.getElementById('carousel-track');
+let animationId; // Declare globally for access in modal functions
 
 // Event Data
 const events = [
-    { img: './img/Eventos/1.jpg', title: 'EVENTO EL ESPIRAL' },
-    { img: './img/Eventos/2.jpg', title: 'BATALLA DE GALLOS' },
-    { img: './img/Eventos/3.webp', title: 'WORKSHOP URBANO' },
-    { img: './img/Eventos/4.jpg', title: 'CONCIERTO EN VIVO' },
-    { img: './img/Eventos/5.jpg', title: 'EXHIBICIÓN DE ARTE' },
-    { img: './img/Eventos/6.jpg', title: 'TORNEO DE BREAKDANCE' },
-    { img: './img/Eventos/7.jpg', title: 'SESIÓN DE DJ' },
-    { img: './img/Eventos/8.jpg', title: 'FIESTA URBANA' },
-    { img: './img/Eventos/9.jpg', title: 'SHOWCASE' },
-    { img: './img/Eventos/10.jpg', title: 'EVENTO ESPECIAL' },
-    { img: './img/Eventos/11.webp', title: 'NOCHE DE TALENTOS' },
-    { img: './img/Eventos/12.jpg', title: 'FESTIVAL URBANO' },
-    { img: './img/Eventos/13.jpg', title: 'COMPETENCIA DE RAP' },
-    { img: './img/Eventos/14.jpg', title: 'ENCUENTRO CULTURAL' },
-    { img: './img/Eventos/15.jpg', title: 'GRAN FINAL' }
+    { img: './img/Eventos/1.jpg', title: 'EVENTO EL ESPIRAL', price: 'GRATIS', description: 'Únete a nosotros para la gran inauguración de la temporada. Música en vivo, exhibiciones de arte y mucho más.' },
+    { img: './img/Eventos/2.jpg', title: 'BATALLA DE GALLOS', price: '$20.000', description: 'Los mejores MCs de la ciudad se enfrentan en una batalla épica. ¿Quién se llevará el título?' },
+    { img: './img/Eventos/3.webp', title: 'WORKSHOP URBANO', price: '$15.000', description: 'Aprende los fundamentos del graffiti y el breakdance con instructores expertos.' },
+    { img: './img/Eventos/4.jpg', title: 'CONCIERTO EN VIVO', price: '$30.000', description: 'Una noche inolvidable con las mejores bandas locales y artistas invitados.' },
+    { img: './img/Eventos/5.jpg', title: 'EXHIBICIÓN DE ARTE', price: 'GRATIS', description: 'Descubre el talento de artistas emergentes en nuestra galería urbana.' },
+    { img: './img/Eventos/6.jpg', title: 'TORNEO DE BREAKDANCE', price: '$10.000', description: 'Siente el ritmo y la energía en este torneo donde los mejores B-boys y B-girls compiten.' },
+    { img: './img/Eventos/7.jpg', title: 'SESIÓN DE DJ', price: '$25.000', description: 'Baila toda la noche con los sets más explosivos de nuestros DJs residentes.' },
+    { img: './img/Eventos/8.jpg', title: 'FIESTA URBANA', price: '$20.000', description: 'La mejor fiesta de la ciudad con música, baile y buen ambiente.' },
+    { img: './img/Eventos/9.jpg', title: 'SHOWCASE', price: 'GRATIS', description: 'Una muestra de los proyectos más innovadores de nuestra comunidad.' },
+    { img: './img/Eventos/10.jpg', title: 'EVENTO ESPECIAL', price: '$50.000', description: 'Un evento exclusivo con sorpresas y actividades únicas.' },
+    { img: './img/Eventos/11.webp', title: 'NOCHE DE TALENTOS', price: 'GRATIS', description: 'El escenario es tuyo. Ven y demuestra tu talento ante el público.' },
+    { img: './img/Eventos/12.jpg', title: 'FESTIVAL URBANO', price: '$40.000', description: 'Un día completo de cultura urbana: música, arte, deporte y gastronomía.' },
+    { img: './img/Eventos/13.jpg', title: 'COMPETENCIA DE RAP', price: '$15.000', description: 'Pon a prueba tus rimas y tu flow en esta competencia de alto nivel.' },
+    { img: './img/Eventos/14.jpg', title: 'ENCUENTRO CULTURAL', price: 'GRATIS', description: 'Un espacio para el diálogo y el intercambio de ideas sobre la cultura urbana.' },
+    { img: './img/Eventos/15.jpg', title: 'GRAN FINAL', price: '$60.000', description: 'El evento más esperado del año. Los finalistas se disputan el gran premio.' }
 ];
 
 // Render Carousel Items
 function renderCarouselItems() {
-    const itemsHTML = events.map((event) => `
-        <div class="carousel-item min-w-full md:min-w-[33.333%] p-4 flex-shrink-0 select-none">
+    const itemsHTML = events.map((event, index) => `
+        <div class="carousel-item w-auto p-4 flex-shrink-0 select-none">
             <div class="border-2 border-yellow-400 p-4 flex flex-col items-center bg-black hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-shadow h-full">
-                <div class="w-full mb-4 overflow-hidden flex justify-center pointer-events-none">
-                    <img src="${event.img}" alt="${event.title}" class="h-auto max-h-96 w-auto max-w-[90%] object-contain hover:scale-110 transition-transform duration-500">
+                <div class="mb-4 overflow-hidden flex justify-center pointer-events-none">
+                    <img src="${event.img}" alt="${event.title}" class="h-80 md:h-96 w-auto object-contain hover:scale-110 transition-transform duration-500">
                 </div>
                 <h3 class="text-2xl font-urban text-center mb-2 uppercase leading-none tracking-wide pointer-events-none">${event.title}</h3>
                 <p class="text-gray-300 mb-6 font-bold pointer-events-none">PRÓXIMAMENTE</p>
-                <a href="#" class="mt-auto bg-yellow-400 text-black font-urban py-2 px-6 rounded hover:bg-yellow-300 transition-colors uppercase w-full text-center text-xl tracking-wider pointer-events-auto">INFO & ENTRADAS</a>
+                <button data-index="${index}" class="open-modal-btn mt-auto bg-yellow-400 text-black font-urban py-2 px-6 rounded hover:bg-yellow-300 transition-colors uppercase w-full text-center text-xl tracking-wider pointer-events-auto">INFO & ENTRADAS</button>
             </div>
         </div>
     `).join('');
@@ -81,11 +82,74 @@ function renderCarouselItems() {
 // Initialize Carousel
 renderCarouselItems();
 
+// Modal Logic
+const eventModal = document.getElementById('event-modal');
+const eventModalContent = document.getElementById('event-modal-content');
+const closeEventModalBtn = document.getElementById('close-event-modal');
+const eventModalOverlay = document.getElementById('event-modal-overlay');
+
+function openEventModal(index) {
+    const event = events[index];
+    if (!event) return;
+
+    // Stop carousel animation when modal is open
+    if(animationId) cancelAnimationFrame(animationId);
+
+    eventModalContent.innerHTML = `
+        <div class="relative h-64 md:h-80">
+            <img src="${event.img}" alt="${event.title}" class="w-full h-full object-contain bg-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                <h2 class="text-3xl md:text-4xl font-urban text-white leading-none mb-2 text-shadow">${event.title}</h2>
+                <span class="bg-yellow-400 text-black text-sm font-bold px-3 py-1 rounded uppercase tracking-wider inline-block shadow-lg">
+                    ${event.price === 'GRATIS' ? 'ENTRADA LIBRE' : 'PRECIO: ' + event.price}
+                </span>
+            </div>
+        </div>
+        <div class="p-6 md:p-8 bg-zinc-900">
+            <p class="text-gray-300 leading-relaxed text-lg mb-6">${event.description}</p>
+            
+            <div class="border-t border-gray-700 pt-6">
+                <h4 class="text-yellow-400 font-urban text-xl mb-4 uppercase tracking-wide">Información de Entradas</h4>
+                ${event.price === 'GRATIS' 
+                    ? `<p class="text-white mb-4">Este evento es de acceso gratuito hasta completar aforo. Te recomendamos llegar temprano.</p>
+                       <button class="w-full bg-gray-700 text-white font-urban py-3 rounded cursor-not-allowed opacity-75 uppercase tracking-widest">Registro en Puerta</button>`
+                    : `<p class="text-white mb-4">Adquiere tus entradas en línea o en taquilla el día del evento.</p>
+                       <button onclick="window.location.href='checkout.html?event=${encodeURIComponent(event.title)}&price=${encodeURIComponent(event.price)}'" class="w-full bg-yellow-400 text-black font-urban py-3 rounded hover:bg-yellow-300 transition-colors uppercase tracking-widest shadow-lg hover:shadow-yellow-400/20">Comprar Entradas (${event.price})</button>`
+                }
+            </div>
+        </div>
+    `;
+    
+    eventModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeEventModal() {
+    eventModal.classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Restore scrolling
+    
+    // Resume carousel animation
+    animationId = requestAnimationFrame(animate);
+}
+
+// Make openEventModal globally available
+window.openEventModal = openEventModal;
+
+if (closeEventModalBtn) closeEventModalBtn.addEventListener('click', closeEventModal);
+if (eventModalOverlay) eventModalOverlay.addEventListener('click', closeEventModal);
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !eventModal.classList.contains('hidden')) {
+        closeEventModal();
+    }
+});
+
 // Continuous Scroll & Drag Logic
 let position = 0;
 let isDragging = false;
 let startX = 0;
-let animationId;
 let speed = 1; // Pixels per frame
 
 function getSingleSetWidth() {
@@ -125,9 +189,23 @@ animationId = requestAnimationFrame(animate);
 
 // Drag Events
 track.addEventListener('mousedown', (e) => {
+    // Prevent drag if clicking a button or link
+    if (e.target.closest('button') || e.target.closest('a')) {
+        return;
+    }
+    
     isDragging = true;
     startX = e.pageX - position;
     track.style.cursor = 'grabbing';
+});
+
+// Click Event Delegation for Buttons
+track.addEventListener('click', (e) => {
+    const btn = e.target.closest('.open-modal-btn');
+    if (btn) {
+        const index = parseInt(btn.getAttribute('data-index'));
+        openEventModal(index);
+    }
 });
 
 track.addEventListener('mouseleave', () => {

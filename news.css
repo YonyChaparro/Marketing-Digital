@@ -1,0 +1,11 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+}
+
+h1 {
+    color: #fbbf24; /* Yellow-400 equivalent */
+    text-align: center;
+}

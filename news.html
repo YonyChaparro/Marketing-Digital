@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - El Espiral</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        urban: ['Anton', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="news.css">
+</head>
+<body class="bg-zinc-900 text-white font-sans">
+
+    <!-- Header (Replicated from index.html) -->
+    <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md text-white z-50 border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="./img/log.jpg" alt="El Espiral" class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex justify-center flex-1">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html#inicio" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">INICIO</a></li>
+                    <li><a href="index.html#eventos" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">EVENTOS</a></li>
+                    <li><a href="index.html#galeria" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">GALERÍA</a></li>
+                    <li><a href="index.html#merch" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">MERCH</a></li>
+                    <li><a href="index.html#patrocinadores" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">PATROCINADORES</a></li>
+                    <li><a href="index.html#contacto" class="text-white font-urban text-xl hover:text-yellow-400 transition-colors uppercase tracking-widest">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white hover:text-yellow-400 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-800 absolute w-full left-0 top-full">
+            <ul class="flex flex-col items-center py-8 space-y-6">
+                <li><a href="index.html#inicio" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">INICIO</a></li>
+                <li><a href="index.html#eventos" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">EVENTOS</a></li>
+                <li><a href="index.html#galeria" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">GALERÍA</a></li>
+                <li><a href="index.html#merch" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">MERCH</a></li>
+                <li><a href="index.html#patrocinadores" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">PATROCINADORES</a></li>
+                <li><a href="index.html#contacto" class="mobile-link text-white font-bold text-xl hover:text-yellow-400 transition-colors uppercase tracking-wider">CONTACTO</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 px-4 bg-black">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-urban text-yellow-400 mb-4 uppercase tracking-widest">Noticias Freestyle</h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">Mantente al día con las últimas novedades del mundo del freestyle, batallas, lanzamientos y cultura urbana.</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="py-16 px-4 bg-zinc-900">
+        <div class="container mx-auto max-w-6xl">
+            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Articles will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="news-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-black bg-opacity-90 transition-opacity" aria-hidden="true" id="modal-overlay"></div>
+
+            <!-- This element is to trick the browser into centering the modal contents. -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Modal panel -->
+            <div class="inline-block align-bottom bg-zinc-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full border border-yellow-400 relative">
+                
+                <button id="close-modal" class="absolute top-4 right-4 text-white hover:text-yellow-400 z-10 bg-black/50 rounded-full p-2 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <div id="modal-content" class="max-h-[80vh] overflow-y-auto">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Simplified) -->
+    <footer class="bg-black text-white py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-500">&copy; 2025 El Espiral. Todos los derechos reservados.</p>
+            <div class="mt-4">
+                <a href="index.html" class="text-yellow-400 hover:text-white transition-colors mx-2">Volver al Inicio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if(menuBtn && mobileMenu){
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // News Data
+        const newsData = [
+            {
+                id: 1,
+                category: 'Internacional',
+                title: 'Resultados de la Final Internacional 2024',
+                excerpt: 'Un resumen completo de las batallas más épicas y el nuevo campeón que se coronó este fin de semana.',
+                image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: `
+                    <p class="mb-4">La Final Internacional 2024 ha dejado una huella imborrable en la historia del freestyle. Ante más de 20,000 espectadores, los mejores MCs del mundo hispanohablante se dieron cita para disputar el cinturón más codiciado.</p>
+                    <p class="mb-4">Desde las primeras rondas, el nivel fue altísimo. Sorpresas como la eliminación temprana de algunos favoritos dejaron claro que en este escenario nadie tiene el puesto asegurado. La gran final fue un duelo de estilos: la agresividad y el punchline directo contra la fluidez y la complejidad métrica.</p>
+                    <p class="mb-4">Finalmente, tras una réplica que mantuvo al público al borde del asiento, el jurado dictó sentencia. El nuevo campeón no solo se lleva el trofeo, sino el respeto de toda una escena que sigue creciendo año tras año.</p>
+                    <h4 class="text-yellow-400 text-xl font-urban mb-2">Momentos Destacados:</h4>
+                    <ul class="list-disc list-inside text-gray-300 mb-4">
+                        <li>El minuto de presentación que se volvió viral en redes.</li>
+                        <li>La batalla de cuartos de final que muchos consideran la verdadera final anticipada.</li>
+                        <li>La ovación del público al representante local.</li>
+                    </ul>
+                `
+            },
+            {
+                id: 2,
+                category: 'Cultura',
+                title: 'El Arte Urbano se toma Bogotá',
+                excerpt: 'Nuevos murales en el centro de la ciudad celebran la historia del hip-hop local.',
+                image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: `
+                    <p class="mb-4">Bogotá siempre ha sido un lienzo para la expresión urbana, pero este mes, el centro de la ciudad ha cobrado una nueva vida. Un colectivo de artistas locales, en colaboración con la alcaldía, ha inaugurado una serie de murales dedicados a los pioneros del hip-hop en Colombia.</p>
+                    <p class="mb-4">Las obras, ubicadas estratégicamente en corredores culturales, no solo embellecen el espacio público, sino que narran la historia de un movimiento que ha servido como herramienta de transformación social para miles de jóvenes.</p>
+                    <p class="mb-4">"Queremos que las nuevas generaciones conozcan sus raíces", comenta uno de los artistas. "El graffiti es uno de los cuatro elementos, y verlo dialogar con la arquitectura histórica de Bogotá es algo poderoso".</p>
+                `
+            },
+            {
+                id: 3,
+                category: 'Música',
+                title: 'Nuevos Beats para tus Improvisaciones',
+                excerpt: 'Descarga nuestro pack mensual de instrumentales gratuitas producidas por talento local.',
+                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: `
+                    <p class="mb-4">Sabemos que para un freestyler, el beat lo es todo. Es el lienzo sobre el cual se pintan las rimas. Por eso, en El Espiral, nos hemos aliado con productores emergentes de la escena bogotana para traerte una colección exclusiva de instrumentales.</p>
+                    <p class="mb-4">Este mes, el pack incluye desde Boombap clásico de los 90s hasta ritmos de Trap y Drill más experimentales. Todas las pistas son de uso libre para tus prácticas y cyphers.</p>
+                    <p class="mb-4">Apoya al talento local descargando el pack y etiquetando a los productores en tus videos. ¡Queremos escucharte fluir!</p>
+                `
+            },
+            {
+                id: 4,
+                category: 'Eventos',
+                title: 'Calendario de Ligas 2025',
+                excerpt: 'Conoce las fechas de inscripción para las principales ligas de ascenso en el país.',
+                image: 'https://images.unsplash.com/photo-1514525253440-b393452e8d26?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: `
+                    <p class="mb-4">El camino al profesionalismo empieza en la plaza. La temporada 2025 promete ser la más competitiva hasta la fecha, con nuevas organizaciones sumándose al circuito de ascenso.</p>
+                    <p class="mb-4">Aquí te presentamos las fechas clave que debes marcar en tu calendario si aspiras a subir en el ranking:</p>
+                    <ul class="list-disc list-inside text-gray-300 mb-4">
+                        <li><strong>Liga de la Calle:</strong> Inscripciones abiertas desde el 15 de Enero.</li>
+                        <li><strong>Copa del Parque:</strong> Audiciones presenciales en Febrero.</li>
+                        <li><strong>Torneo Nacional de Ascenso:</strong> Primera fecha regional en Marzo.</li>
+                    </ul>
+                    <p class="mb-4">No dejes pasar la oportunidad. Prepara tus mejores rimas y demuestra por qué mereces estar en la élite.</p>
+                `
+            },
+            {
+                id: 5,
+                category: 'Entrevistas',
+                title: 'Entrevista Exclusiva: El Ascenso de MC Joven',
+                excerpt: 'Hablamos con la revelación del año sobre sus técnicas de entrenamiento y planes futuros.',
+                image: 'https://images.unsplash.com/photo-1525362081669-2b476bb628c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: `
+                    <p class="mb-4">Hace un año, pocos conocían su nombre. Hoy, es el rival que nadie quiere enfrentar en primera ronda. Nos sentamos con MC Joven para entender qué hay detrás de su explosivo crecimiento.</p>
+                    <p class="mb-4"><strong>El Espiral:</strong> ¿Cómo ha cambiado tu rutina desde que ganaste la regional?</p>
+                    <p class="mb-4"><strong>MC Joven:</strong> "La disciplina es la misma, pero la intensidad ha subido. Entreno 4 horas diarias, no solo rapeando, sino leyendo, ampliando vocabulario y estudiando batallas antiguas. El talento te lleva hasta cierto punto, el trabajo duro te mantiene ahí".</p>
+                    <p class="mb-4">En esta entrevista a fondo, el rapero nos comparte sus técnicas para mantener la calma bajo presión y sus objetivos para la próxima temporada internacional.</p>
+                `
+            },
+            {
+                id: 6,
+                category: 'Opinión',
+                title: '¿El formato FMS necesita cambios?',
+                excerpt: 'Analizamos los pros y contras de las reglas actuales y qué proponen los expertos.',
+                image: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: `
+                    <p class="mb-4">La Freestyle Master Series (FMS) revolucionó el circuito profesionalizando la disciplina. Sin embargo, tras varias temporadas, surge el debate: ¿Se ha vuelto monótono el formato?</p>
+                    <p class="mb-4">Algunos puristas defienden que las rondas con temáticas y palabras obligadas demuestran quién es el MC más completo. Otros argumentan que limitan la espontaneidad y la agresividad natural de una batalla de rap.</p>
+                    <p class="mb-4">Analizamos las propuestas que suenan para el próximo año: desde la reintroducción de los minutos libres sin restricciones hasta nuevos formatos de "kick-back" que fomenten la respuesta inmediata. El futuro de la liga podría depender de su capacidad para reinventarse.</p>
+                `
+            }
+        ];
+
+        // Render Grid
+        const newsGrid = document.getElementById('news-grid');
+        
+        function renderNews() {
+            newsGrid.innerHTML = newsData.map(news => `
+                <article class="bg-black border border-gray-800 rounded-lg overflow-hidden hover:border-yellow-400 transition-colors group cursor-pointer" onclick="openModal(${news.id})">
+                    <div class="h-48 overflow-hidden">
+                        <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-yellow-400 text-sm font-bold uppercase tracking-wider mb-2 block">${news.category}</span>
+                        <h3 class="text-2xl font-urban text-white mb-3 leading-tight">${news.title}</h3>
+                        <p class="text-gray-400 mb-4 text-sm">${news.excerpt}</p>
+                        <span class="text-white font-bold hover:text-yellow-400 transition-colors inline-flex items-center">
+                            Leer más 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </span>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        renderNews();
+
+        // Modal Logic
+        const modal = document.getElementById('news-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalOverlay = document.getElementById('modal-overlay');
+
+        function openModal(id) {
+            const news = newsData.find(n => n.id === id);
+            if (!news) return;
+
+            modalContent.innerHTML = `
+                <div class="relative h-64 md:h-96">
+                    <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 md:p-8">
+                        <span class="bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded uppercase tracking-wider mb-2 inline-block">${news.category}</span>
+                        <h2 class="text-3xl md:text-5xl font-urban text-white leading-none">${news.title}</h2>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 text-gray-300 leading-relaxed text-lg">
+                    ${news.content}
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
