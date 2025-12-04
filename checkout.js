@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const eventName = urlParams.get('event');
     const eventPrice = urlParams.get('price');
+    const eventImg = urlParams.get('img');
 
     // Elements
     const eventNameEl = document.getElementById('summary-event-name');
     const totalEl = document.getElementById('summary-total');
+    const summaryImage = document.getElementById('summary-image');
     const form = document.getElementById('payment-form');
     const btnText = document.getElementById('btn-text');
     const btnSpinner = document.getElementById('btn-spinner');
@@ -17,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
         eventNameEl.textContent = decodeURIComponent(eventName);
     } else {
         eventNameEl.textContent = 'Evento Desconocido';
+    }
+
+    if (eventImg) {
+        summaryImage.src = decodeURIComponent(eventImg);
+        summaryImage.classList.remove('hidden');
     }
 
     if (eventPrice) {

@@ -115,7 +115,7 @@ function openEventModal(index) {
                     ? `<p class="text-white mb-4">Este evento es de acceso gratuito hasta completar aforo. Te recomendamos llegar temprano.</p>
                        <button class="w-full bg-gray-700 text-white font-urban py-3 rounded cursor-not-allowed opacity-75 uppercase tracking-widest">Registro en Puerta</button>`
                     : `<p class="text-white mb-4">Adquiere tus entradas en línea o en taquilla el día del evento.</p>
-                       <button onclick="window.location.href='checkout.html?event=${encodeURIComponent(event.title)}&price=${encodeURIComponent(event.price)}'" class="w-full bg-yellow-400 text-black font-urban py-3 rounded hover:bg-yellow-300 transition-colors uppercase tracking-widest shadow-lg hover:shadow-yellow-400/20">Comprar Entradas (${event.price})</button>`
+                       <button onclick="window.location.href='checkout.html?event=${encodeURIComponent(event.title)}&price=${encodeURIComponent(event.price)}&img=${encodeURIComponent(event.img)}'" class="w-full bg-yellow-400 text-black font-urban py-3 rounded hover:bg-yellow-300 transition-colors uppercase tracking-widest shadow-lg hover:shadow-yellow-400/20">Comprar Entradas (${event.price})</button>`
                 }
             </div>
         </div>
