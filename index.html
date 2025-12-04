@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -460,6 +460,18 @@
                     <!-- Content injected by JS -->
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 z-[70] hidden flex items-center justify-center bg-black/95 backdrop-blur-sm p-4" role="dialog" aria-modal="true">
+        <button id="close-gallery-modal" class="absolute top-4 right-4 text-white hover:text-yellow-400 z-50 transition-colors p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <div class="relative w-full h-full flex items-center justify-center" id="gallery-modal-overlay">
+            <img id="gallery-modal-image" src="" alt="Galería Fullscreen" class="max-w-full max-h-full object-contain shadow-2xl rounded-sm">
         </div>
     </div>
 

@@ -245,3 +245,46 @@ track.addEventListener('touchmove', (e) => {
 window.addEventListener('resize', () => {
     // Optional: Reset position or adjust if layout breaks significantly
 });
+
+// Gallery Modal Logic
+const galleryModal = document.getElementById('gallery-modal');
+const galleryModalImage = document.getElementById('gallery-modal-image');
+const closeGalleryModalBtn = document.getElementById('close-gallery-modal');
+const galleryModalOverlay = document.getElementById('gallery-modal-overlay');
+const galleryImages = document.querySelectorAll('#galeria img');
+
+function openGalleryModal(src) {
+    galleryModalImage.src = src;
+    galleryModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+    galleryModal.classList.add('hidden');
+    galleryModalImage.src = '';
+    document.body.style.overflow = 'auto';
+}
+
+// Add click event to all gallery images
+galleryImages.forEach(img => {
+    img.parentElement.addEventListener('click', () => {
+        openGalleryModal(img.src);
+    });
+});
+
+if (closeGalleryModalBtn) closeGalleryModalBtn.addEventListener('click', closeGalleryModal);
+if (galleryModalOverlay) {
+    galleryModalOverlay.addEventListener('click', (e) => {
+        if (e.target === galleryModalOverlay) {
+            closeGalleryModal();
+        }
+    });
+}
+
+// Close on Escape key (Generic for both modals)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (!eventModal.classList.contains('hidden')) closeEventModal();
+        if (galleryModal && !galleryModal.classList.contains('hidden')) closeGalleryModal();
+    }
+});
